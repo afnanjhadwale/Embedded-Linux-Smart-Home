@@ -1,0 +1,80 @@
+I have completed a 6-day practical Embedded Linux / Embedded Systems course. Treat this as part of my technical background and understand that I have hands-on exposure to the following topics.
+
+The course was based on Ubuntu Linux and an embedded Linux development board, where I worked with C programming, Linux commands, cross-compilation, hardware interfacing, communication protocols, sensors, MQTT and ThingsBoard.
+
+During Day 1, I learned Linux fundamentals and the basic Embedded Linux environment. I worked with the Linux terminal and commands such as whoami, cd, pwd, ls, man, mkdir, echo, cat, cp, mv and rm. I learned how Linux files and directories are handled, standard input/output/error (stdin, stdout and stderr), output redirection using > and >>, and Linux file permissions using read, write and execute (rwx). I practiced chmod, including numerical permissions such as 755, and checked permissions using ls -l. I was introduced to the Vim editor and practiced creating and editing C source files using Vim commands such as i, Esc and :wq!. I wrote basic C programs and learned the complete C compilation process: preprocessing, compilation, assembly and linking. I worked with intermediate files such as .i, .s and .o files and learned commands such as gcc -E, gcc -S, gcc -c, gcc and gcc --save-temps. I also learned how the linker combines object code with required libraries to create the final executable and how to execute a program using ./program.
+
+During Day 2, I moved from normal PC-based C compilation to Embedded Linux cross-compilation. I learned the difference between native compilation and cross-compilation and why an executable compiled for an x86/x86-64 PC cannot directly run on an ARM-based embedded board. I worked with an embedded Linux SDK/toolchain and learned how to source the toolchain environment before compiling programs for the target board. I learned to identify executable architecture using the file command and understood errors such as "Exec format error" caused by using a binary built for the wrong architecture. I also learned how to communicate between the PC and embedded board using networking and TFTP. I worked with IP addresses, ifconfig, udhcpc and TFTP file transfer. I transferred cross-compiled executables from the PC to the board, changed their permissions using chmod +x and executed them on the board. I also worked with the board's serial terminal using Minicom and learned serial configuration such as 115200 8N1. I was introduced to GPIO at the Linux level and learned how the PC, compiler/toolchain, network, board and hardware are connected in an Embedded Linux development workflow.
+
+During Day 3, I worked with GPIO using the MRAA hardware abstraction library. I learned how to initialize MRAA and access GPIO through C programs using functions such as mraa_init(), mraa_gpio_init(), mraa_gpio_dir(), mraa_gpio_write(), mraa_gpio_read(), mraa_gpio_mode() and mraa_gpio_close(). I configured GPIOs as inputs and outputs and worked with LEDs and switches. I created an LED blinking program using GPIO output and timing functions such as usleep(). I also created switch-controlled LED programs where the switch was configured as a GPIO input and the LED as a GPIO output. I learned about pull-up configuration and reading the state of a switch, then using that input to control an LED. This gave me practical exposure to controlling hardware peripherals from C programs running on Embedded Linux.
+
+During Day 4, I worked with UART, ADC, sensors and MQTT. In UART, I learned TX and RX, serial communication, baud rate and configurations such as 115200 8N1 and 9600 baud. I learned the concepts of simplex, half-duplex and full-duplex communication and practiced UART loopback communication, where transmitted data is returned through the receiver. I also created UART-based LED control where commands received through UART were interpreted by a C program and used to control a GPIO LED.
+
+I then worked with ADC (Analog-to-Digital Converter). I learned how analog sensor voltages are converted into digital values and worked with MRAA AIO/ADC functions. I used a potentiometer to generate a variable analog input and observed the changing ADC values. I learned ADC resolution, including 8-bit, 10-bit and 12-bit ADCs, the relationship 2^N = number of ADC levels, and the concept of ADC step size and voltage conversion.
+
+I also worked with an LDR (Light Dependent Resistor). I read the LDR through an ADC channel, compared the sensor value against a threshold and used the result to control an LED. This gave me practical experience with analog sensors, ADC reading, threshold-based decision making and GPIO output control.
+
+The same day I was introduced to MQTT and Mosquitto. I learned the MQTT publish/subscribe model, MQTT broker, publisher, subscriber, topics and messages. I practiced MQTT communication using Mosquitto publisher and subscriber commands. I also learned the basics of ThingsBoard, including device profiles, devices/entities, telemetry and dashboards, and understood how an embedded device can send sensor information to an IoT platform.
+
+During Day 5, I developed a complete Smart Home / IoT project that combined the concepts learned throughout the previous days. The project used an Embedded Linux board, an MQ gas/smoke sensor, an AHT25 temperature and humidity sensor, an LED, MRAA, ADC, GPIO, I2C, MQTT, JSON, ThingsBoard and MQTT RPC.
+
+The MQ sensor was connected through an analog input and the program continuously read its value using MRAA ADC functions. A threshold was used to determine whether the gas/smoke level was normal or detected. Based on this threshold, the program automatically controlled an LED and maintained a smoke_detected/LED status value.
+
+The AHT25 sensor was connected through I2C. I worked with I2C bus/address configuration and learned how the C program sends a measurement command to the AHT25, reads raw sensor bytes, processes the raw data and converts it into temperature and humidity values.
+
+The project then combined the sensor readings into a JSON telemetry payload containing values such as MQ value, smoke detection status, temperature, humidity and LED status. This telemetry was published using MQTT to ThingsBoard. I observed the telemetry being successfully uploaded and viewed sensor information such as temperature and humidity on the ThingsBoard dashboard.
+
+I also worked with MQTT RPC for two-way communication. ThingsBoard could send an RPC command to the embedded board, such as a command to turn the LED ON or OFF. The C program received the RPC request, interpreted the command, controlled the GPIO LED and sent an RPC response back to ThingsBoard. Therefore, the project supported both board-to-cloud telemetry and cloud-to-board control.
+
+The project also introduced multithreading using pthreads. A separate telemetry thread continuously read the sensors, processed the values, created the JSON payload and published telemetry periodically, while the MQTT system could simultaneously handle incoming RPC commands.
+
+Overall, this course gave me practical exposure to the complete Embedded Linux development workflow:
+
+Linux fundamentals
+→ C programming
+→ Compilation
+→ Cross-compilation
+→ ARM toolchain
+→ PC-to-board communication
+→ TFTP
+→ Serial/Minicom
+→ GPIO
+→ MRAA
+→ LED and switch control
+→ UART
+→ ADC
+→ Potentiometer
+→ LDR
+→ I2C
+→ AHT25
+→ MQ gas/smoke sensor
+→ MQTT
+→ Mosquitto
+→ JSON telemetry
+→ ThingsBoard
+→ Device/Profile/Entities
+→ Dashboard
+→ MQTT RPC
+→ Multithreading
+
+The overall practical architecture I worked with was:
+
+Sensors / Hardware
+→ Embedded Linux Board
+→ C Program + MRAA
+→ Sensor Processing
+→ JSON
+→ MQTT
+→ ThingsBoard
+→ Dashboard
+
+and for remote control:
+
+ThingsBoard
+→ MQTT RPC
+→ Embedded Linux Board
+→ C Program
+→ GPIO
+→ LED
+
+Understand that I have completed this as a hands-on practical course, not just theoretical study. When discussing my skills, experience or resume, describe this as practical exposure to Embedded Linux development, C programming, Linux command-line tools, cross-compilation, ARM-based embedded development, hardware interfacing, GPIO, UART, ADC, I2C, sensors, MQTT and ThingsBoard-based IoT development.
