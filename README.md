@@ -245,6 +245,12 @@ The uploaded project is organized as follows. This README is intended to sit in 
 
 ```text
 Linux/
+├── assets/images/
+│   ├──hardware-setup.jpeg
+│   ├──rpc-control.jpeg
+│   ├──rugged-board.jpeg
+│   ├──terminal-output.jpeg
+│   └──thingsboard-dashboard.jpeg
 ├── codes/
 │   ├── Project.c                 # Smart Home + ThingsBoard application
 │   ├── adc_basic.c               # MRAA analog-input example
